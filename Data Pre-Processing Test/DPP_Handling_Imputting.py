@@ -59,11 +59,17 @@ print(sales)
 
 
 #Fills the null place with the passed value:-
-sales = sales.fillna(50)
+# sales = sales.fillna(50)
 print(sales)
 
+from sklearn.impute import SimpleImputer
 
 
+impute = SimpleImputer(missing_values=np.nan, strategy='mean')
+impute.fit(sales[ ['salt'] ])
+sales['salt'] = impute.transform(sales[['salt']])
+
+print(sales)
 
 
 
